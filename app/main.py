@@ -1,12 +1,14 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.openapi.docs import get_swagger_ui_html
-from fastapi.security import http
 from fastapi.staticfiles import StaticFiles
 
 FAVICON_PATH = "static/favicon_io/favicon.ico"
 
-app = FastAPI(docs_url=None)
+app = FastAPI(
+    title="SCULIS Gateway API",
+    docs_url=None
+)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
