@@ -41,7 +41,7 @@ async def redoc_ui_html():
     return get_redoc_html(
         openapi_url="/openapi.json",
         title="SCULIS API Docs",
-        swagger_favicon_url=staticfile('/favicon_io/favicon.ico')
+        redoc_favicon_url=staticfile('/favicon_io/favicon.ico')
     )
 
 
