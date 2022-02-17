@@ -9,10 +9,6 @@ from ....utils.utils import VerifyToken
 STATIC_PATH = 'app/static'
 
 
-def staticfile(srel_path: os.PathLike):
-    return os.path.join(STATIC_PATH+srel_path)
-
-
 token_auth_scheme = HTTPBearer()
 
 # create an APP instance
@@ -31,7 +27,7 @@ async def swagger_ui_html():
     return get_swagger_ui_html(
         openapi_url="/openapi.json",
         title="SCULIS API Docs",
-        swagger_favicon_url=staticfile('/favicon_io/favicon.ico')
+        swagger_favicon_url="static/favicon_io/favicon.ico"
     )
 
 
@@ -41,7 +37,7 @@ async def redoc_ui_html():
     return get_redoc_html(
         openapi_url="/openapi.json",
         title="SCULIS API Docs",
-        redoc_favicon_url=staticfile('/favicon_io/favicon.ico')
+        redoc_favicon_url="static/favicon_io/favicon.ico"
     )
 
 
@@ -49,14 +45,14 @@ async def redoc_ui_html():
 @app.get("/favicon.ico", include_in_schema=False)
 async def get_favicon():
     # sets the url for the favicon.ico
-    return FileResponse(staticfile('/favicon_io/favicon.ico'))
+    return FileResponse(STATIC_PATH+"/static/favicon_io/favicon.ico")
 
 
 # logo.png
 @app.get("/logo.png", include_in_schema=False)
 async def get_favicon():
     # sets the url for the favicon.ico
-    return FileResponse(staticfile('/favicon_io/logo-512x512.png'))
+    return FileResponse(STATIC_PATH+"/favicon_io/logo-512x512.png")
 
 
 # ########################################################################################################################################
