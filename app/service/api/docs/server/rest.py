@@ -12,7 +12,7 @@ SWAGGER_FAVICON_URL = REDOC_FAVICON_URL = "/static/favicon.ico"
 
 
 def GET_swagger_docs() -> HTMLResponse:
-    return get_swagger_ui_html(**COMMON, swagger_favicon_url=SWAGGER_FAVICON_URL)
+    return get_swagger_ui_html(**COMMON, swagger_favicon_url=SWAGGER_FAVICON_URL, )
 
 
 def GET_redoc_docs() -> HTMLResponse:

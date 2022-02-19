@@ -3,16 +3,19 @@ from fastapi import APIRouter
 from app.service.api.docs.server.rest import GET_swagger_docs, GET_redoc_docs
 
 
-router = APIRouter()
-
+router = APIRouter(
+    tags=['documentation']
+)
 
 # reconfigure swagger documentation page
-@router.get("/swagger")
-async def swagger_ui_html():
+
+
+@router.get("", include_in_schema=False)
+async def swagger_docs():
     return GET_swagger_docs()
 
 
 # reconfigure redoc documentation page
-@router.get("/redoc")
-async def redoc_ui_html():
-    return GET_redoc_docs()
+# @router.get("")
+# async def redoc_docs():
+#     return GET_redoc_docs()
