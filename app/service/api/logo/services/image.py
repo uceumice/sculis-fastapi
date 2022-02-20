@@ -1,6 +1,5 @@
-from io import BytesIO
 from cairosvg import svg2png
-from app.service.api.static.utils.utils import STATIC_DIR
+from app.service.api.logo.utils.utils import STATIC_DIR
 
 
 def logo(filepath: str, size: int):

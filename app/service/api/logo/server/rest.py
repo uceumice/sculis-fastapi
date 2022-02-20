@@ -1,13 +1,7 @@
 from typing import Optional
-from app.service.api.static.services.responses import SvgResponse, PngResponse, IcoResponse
-from app.service.api.static.services.image import logo
-from app.service.api.static.utils.utils import STATIC_DIR
-import os
-
-
-def GET_favicon():
-    with open(STATIC_DIR+"/favicon.ico", 'rb') as f:
-        return IcoResponse(f)
+from app.service.api.logo.services.responses import SvgResponse, PngResponse
+from app.service.api.logo.services.image import logo
+from app.service.api.logo.utils.utils import STATIC_DIR
 
 
 def GET_png_logo(res: Optional[int] = None, _for: Optional[str] = None) -> PngResponse:
