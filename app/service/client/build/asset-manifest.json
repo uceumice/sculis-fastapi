@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.23f26e63.css",
-    "main.js": "/static/js/main.5e1f07a7.js",
+    "main.js": "/static/js/main.a44a2acd.js",
     "static/js/787.c69a0b77.chunk.js": "/static/js/787.c69a0b77.chunk.js",
-    "static/media/sculis-logo.svg": "/static/media/sculis-logo.7a8462f288dcbfbc80b8bbe5378ab2f8.svg",
     "static/media/Discord-Logo-White.svg": "/static/media/Discord-Logo-White.9a823ca6b8fc45606216d185eb2ba419.svg",
+    "static/media/GitHub-Mark-Light.svg": "/static/media/GitHub-Mark-Light.92d48dffa3594741b5e6a573d0909aaf.svg",
     "index.html": "/index.html",
     "main.23f26e63.css.map": "/static/css/main.23f26e63.css.map",
-    "main.5e1f07a7.js.map": "/static/js/main.5e1f07a7.js.map",
+    "main.a44a2acd.js.map": "/static/js/main.a44a2acd.js.map",
     "787.c69a0b77.chunk.js.map": "/static/js/787.c69a0b77.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.23f26e63.css",
-    "static/js/main.5e1f07a7.js"
+    "static/js/main.a44a2acd.js"
   ]
 }
