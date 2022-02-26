@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.23f26e63.css",
-    "main.js": "/static/js/main.4e8b79c8.js",
+    "main.js": "/static/js/main.61cc1b50.js",
     "static/js/787.c69a0b77.chunk.js": "/static/js/787.c69a0b77.chunk.js",
-    "static/media/sculis-logo.svg": "/static/media/sculis-logo.0985edc4e0380e81d3479bc9808e7d61.svg",
+    "static/media/sculis-logo.svg": "/static/media/sculis-logo.7a8462f288dcbfbc80b8bbe5378ab2f8.svg",
     "static/media/Discord-Logo-White.svg": "/static/media/Discord-Logo-White.9a823ca6b8fc45606216d185eb2ba419.svg",
     "index.html": "/index.html",
     "main.23f26e63.css.map": "/static/css/main.23f26e63.css.map",
-    "main.4e8b79c8.js.map": "/static/js/main.4e8b79c8.js.map",
+    "main.61cc1b50.js.map": "/static/js/main.61cc1b50.js.map",
     "787.c69a0b77.chunk.js.map": "/static/js/787.c69a0b77.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.23f26e63.css",
-    "static/js/main.4e8b79c8.js"
+    "static/js/main.61cc1b50.js"
   ]
 }
