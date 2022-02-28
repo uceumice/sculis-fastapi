@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.23f26e63.css",
-    "main.js": "/static/js/main.0f914051.js",
+    "main.css": "/static/css/main.d4da9d11.css",
+    "main.js": "/static/js/main.c741a671.js",
     "static/js/787.c69a0b77.chunk.js": "/static/js/787.c69a0b77.chunk.js",
     "static/media/vlc-record.webm": "/static/media/vlc-record.23ff1a51b942bc6795b2.webm",
-    "static/media/Discord-Logo-White.svg": "/static/media/Discord-Logo-White.9a823ca6b8fc45606216d185eb2ba419.svg",
     "index.html": "/index.html",
-    "main.23f26e63.css.map": "/static/css/main.23f26e63.css.map",
-    "main.0f914051.js.map": "/static/js/main.0f914051.js.map",
+    "main.d4da9d11.css.map": "/static/css/main.d4da9d11.css.map",
+    "main.c741a671.js.map": "/static/js/main.c741a671.js.map",
     "787.c69a0b77.chunk.js.map": "/static/js/787.c69a0b77.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.23f26e63.css",
-    "static/js/main.0f914051.js"
+    "static/css/main.d4da9d11.css",
+    "static/js/main.c741a671.js"
   ]
 }
