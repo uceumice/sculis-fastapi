@@ -1,20 +1,16 @@
 from fastapi import APIRouter, Path, Query
 
-from app.service.api.logo.utils.utils import STATIC_DIR
-from app.service.api.logo.server.rest import GET_png_logo, GET_svg_logo
+from app.service.api.subst.server.rest import GET_subst, GET_news
 
 
 router = APIRouter(tags=['Substitution'])
 
 
-@router.get("/subst/{date}", include_in_schema=True)
-async def subst(
-    date: str = Path(regex=r"^\d{4}-([0]\d|1[0-2])-(0[1-9]|[1-2]\d|3[01])$"),
-    o: dict = Query(default=None)
-):  
-    return None
+@router.get("/test/subst/{date}", include_in_schema=True)
+async def subst(date: str = Path(..., regex=r"^\d{4}-([0]\d|1[0-2])-(0[1-9]|[1-2]\d|3[01])$"), o: str = Query(default=None)):
+    return GET_subst(dstr=date, o=o)
 
 
-@router.get("/news", include_in_schema=True)
-async def news(o: dict = Query(default=None)):
-    return None
+@router.get("/test/news/{date}", include_in_schema=True)
+async def list_news(date: str = Path(..., regex=r"^\d{4}-([0]\d|1[0-2])-(0[1-9]|[1-2]\d|3[01])$")):
+    return GET_news(dstr=date)

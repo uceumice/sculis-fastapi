@@ -5,13 +5,13 @@ app = FastAPI(
     debug=True,
     title="Sculis API Gateway",
     description="""
-*Vertretung, Stundenplan und Kommunikation. Alles in einem API! 🚀*
+*Vertretung / Stundenplan. Alles in einem API! 🚀*
 """,
     version="alpha",
-    terms_of_service="/tos#API",
+    terms_of_service="/tos#api",
     contact={'Alex': "alexandrutocar@gmail.com"},
     docs_url=False
 )
 
 
-app.include_router(gateway.router, prefix="/v2")
+app.include_router(gateway.router, prefix="/api")
