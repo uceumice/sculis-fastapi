@@ -1,5 +1,3 @@
-# SCULIS
+# Sculis Server&API
 
-[Hier geht's zum WebApp](https://sculis.herokuapp.com)
-
-Sculis ist der ultimative Vertretung-Manager.
+[Hier geht's zum App](https://sculis.uceumice.com)
