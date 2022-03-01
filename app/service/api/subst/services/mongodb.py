@@ -19,7 +19,7 @@ load_dotenv()
 
 # helpers
 
-timezone = pytz.timezone(os.getenv("HOTZ"))
+timezone = pytz.timezone(os.environ.get("HOTZ"))
 
 
 def _date_to_datetime(datum: datetime.date):
@@ -227,8 +227,8 @@ def _updateNews(col, date_, news_: list) -> Union[None, int]:
 
 class Connector:
     def __init__(self):
-        self.client = MongoClient(os.getenv("MOST"))
-        db = self.client.get_database(os.getenv("DBNA"))
+        self.client = MongoClient(os.environ.get("MOST"))
+        db = self.client.get_database(os.environ.get("DBNA"))
         self.col_test = db.get_collection('test')
         self.col_news = db.get_collection('news')
 

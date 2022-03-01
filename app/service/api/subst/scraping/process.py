@@ -46,7 +46,7 @@ def update():
     connector = Connector()
     
     # collect links to retrieve data from
-    for link in json.loads(os.getenv("LINKS")):
+    for link in json.loads(os.environ.get("LINKS")):
         # instantiate scraper
         scraper = SubstitutionScraper(link)
 
