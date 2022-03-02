@@ -6,6 +6,8 @@ import os
 
 from app.service.api.subst.services.mongodb import Connector
 from scraper import SubstitutionScraper
+from dotenv import load_dotenv
+load_dotenv()
 
 SCRIPTDIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -72,6 +74,7 @@ while True:
         logger.debug(f"Updated in {end - start} sec")
     except Exception as e:
         logger.error(e)
+        raise e
     logger.debug(f"Wait {INTERVAAL} sec")
     time.sleep(INTERVAAL)
 
