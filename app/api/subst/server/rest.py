@@ -8,7 +8,7 @@ from datetime import datetime
 from bson.objectid import ObjectId
 
 # subs
-from app.service.api.subst.services.mongodb import Connector
+from app.api.subst.services.mongodb import Connector
 
 
 # url decode & parse

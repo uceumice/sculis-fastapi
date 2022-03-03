@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Path, Query
 
-from app.service.api.subst.server.rest import GET_subst, GET_news
+from app.api.subst.server.rest import GET_subst, GET_news
 
 
 router = APIRouter(tags=['Substitution'])

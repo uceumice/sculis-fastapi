@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.service.api.logo.server import routes as logo
-from app.service.api.subst.server import routes as subst
+from app.api.logo.server import routes as logo
+from app.api.subst.server import routes as subst
 
 router = APIRouter()
 

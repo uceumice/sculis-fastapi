@@ -4,7 +4,7 @@ import sys
 import time
 import os
 
-from app.service.api.subst.services.mongodb import Connector
+from app.api.subst.services.mongodb import Connector
 from scraper import SubstitutionScraper
 from dotenv import load_dotenv
 load_dotenv()

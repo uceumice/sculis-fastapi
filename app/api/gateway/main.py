@@ -1,13 +1,16 @@
 from fastapi import FastAPI
-from app.service.api.gateway import router as gateway
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.api.gateway.base import router as base
+
 
 origins = [
     "http://sculis.uceumice.com",
-    "https://sculis.herokuapp.com",
+    "https://sculis.uceumice.com",
+    "https://sculis-api.uceumice.com",
+    "http://sculis-web.herokuapp.com",
     "http://127.0.0.1:3000"
 ]
-
 
 app = FastAPI(
     debug=True,
@@ -18,7 +21,6 @@ app = FastAPI(
     version="alpha",
     terms_of_service="/tos#api",
     contact={'Alex': "alexandrutocar@gmail.com"},
-    docs_url=False
 )
 
 app.add_middleware(
@@ -29,4 +31,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(gateway.router, prefix="/api")
+
+app.include_router(base.router, prefix="/b/v2")
+
+# TODO
+# app.include_router(mobile_gateway.router, prefix="/m")
+# app.include_router(desktop_gateway.router, prefix="/d")
+# app.include_router(dapp_gateway.router, prefix="/a")
