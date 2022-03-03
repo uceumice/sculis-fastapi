@@ -261,11 +261,17 @@ class Connector:
                 for block in data_['subst']:
                     for entry in block['entries']:
                         for _filter in _filters:
-                            if entry['subject'] != _filter['sid'] or entry['group'] != _filter['gid']:
-                                block['entries'].remove(entry)
+                            if entry['subject'] != _filter['sid'] and entry['group'] != _filter['gid']:
+                                try:
+                                    block['entries'].remove(entry)
+                                except Exception:
+                                    pass
 
                             if len(block['entries']) == 0:
-                                data_['subst'].remove(block)
+                                try:
+                                    data_['subst'].remove(block)
+                                except Exception:
+                                    pass
 
                 # return
             return dict(data_)
