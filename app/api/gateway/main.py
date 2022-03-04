@@ -32,7 +32,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
 app.include_router(base.router, prefix="/b/v2")
 
 # TODO

@@ -4,7 +4,7 @@ import sys
 import time
 import os
 
-from app.api.subst.services.mongodb import Connector
+from app.utils.mongodb.mongodb import Connector
 from scraper import SubstitutionScraper
 from dotenv import load_dotenv
 load_dotenv()
@@ -40,7 +40,7 @@ def config_intervaal(tag: int = 0, stunde: int = 0, minute: int = 0, sekunde: in
     return sekunde + 60*minute + stunde*60*60 + tag*24*60*60
 
 
-INTERVAAL = config_intervaal(minute=2)
+INTERVAAL = config_intervaal(sekunde=10)
 
 
 def update():
@@ -74,7 +74,6 @@ while True:
         logger.debug(f"Updated in {end - start} sec")
     except Exception as e:
         logger.error(e)
-        raise e
     logger.debug(f"Wait {INTERVAAL} sec")
     time.sleep(INTERVAAL)
 

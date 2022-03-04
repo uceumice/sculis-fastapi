@@ -1,5 +1,9 @@
 # db
 from pymongo import MongoClient
+from pymongo.collection import Collection
+
+# aggregation
+from app.utils.mongodb.aggregation import subs
 
 # dates
 import pytz
@@ -14,6 +18,7 @@ from typing import List, Union
 # env
 import os
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -209,7 +214,7 @@ def _updateNews(col, date_, news_: list) -> Union[None, int]:
                 }
             )
 
-            if not alupdated or alupdated['hash'] == nhash:
+            if not alupdated or alupdated['nhash'] == nhash:
                 return None
             else:
                 col.find_one_and_update(
@@ -252,29 +257,25 @@ class Connector:
     # commons
 
     @ staticmethod
-    def _getByDate(coll, date_: datetime.date, _filters: list[dict[str, str]] = None) -> dict:
+    def _getByDate(coll: Collection, date_: datetime.date, _filters: list[dict[str, str]] = None) -> list:
         date_ = _date_to_datetime(date_)
-        data_ = coll.find_one(filter={'metas._': date_})
-        if data_:
-            # filtering
-            if _filters:
-                for block in data_['subst']:
-                    for entry in block['entries']:
-                        for _filter in _filters:
-                            if entry['subject'] != _filter['sid'] and entry['group'] != _filter['gid']:
-                                try:
-                                    block['entries'].remove(entry)
-                                except Exception:
-                                    pass
 
-                            if len(block['entries']) == 0:
-                                try:
-                                    data_['subst'].remove(block)
-                                except Exception:
-                                    pass
+        # holy aggregation
+        data_ = list(
+            coll.aggregate(
+                subs.Aggregation(date_, _filters)
+                .find_one()
+                .project()
+                .filters_()
+                .clean_empty()
+                .appl()
+            )
+        )
 
-                # return
-            return dict(data_)
+        if len(data_) > 0:
+            return list(data_)[0]['subst']
+        else:
+            return None
 
     @ staticmethod
     def _getLast(coll) -> dict:
@@ -300,6 +301,33 @@ class Connector:
         if data_:
             return data_['news_']
 
+    # dates getters
+    def getDates(self):
+        ndts = list(
+            self.col_test.aggregate([
+                {
+                    "$sort": {
+                        "metas._": -1
+                    }
+                },
+                {
+                    "$limit": 10
+                },
+                {
+                    "$project": {
+                        "_id": 0,
+                        "metas._": 1
+                    }
+                }
+            ])
+        )
+
+        if ndts:
+            return list([doc_['metas']['_'] for doc_ in ndts])
+        else:
+            return None
+
     # close
+
     def close(self):
         self.client.close()
