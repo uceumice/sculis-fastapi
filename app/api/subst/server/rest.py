@@ -2,7 +2,7 @@
 from fastapi.exceptions import HTTPException
 
 # dates
-from datetime import datetime
+from datetime import date, datetime, timedelta
 
 # subs
 from app.utils.mongodb.mongodb import Connector
@@ -45,3 +45,22 @@ def GET_dates() -> list:
         raise HTTPException(404)
 
     return data_
+
+
+def GET_closest_date() -> date:
+    dates_ = GET_dates()
+    today = datetime.now()
+
+    temp_diff = timedelta()
+    temp_date = dates_[0]
+    for date_ in dates_[1:]:
+        diff_ = today - date_
+        if temp_diff:
+            if diff_ < temp_diff:
+                temp_diff = diff_
+                temp_date = date_
+
+    if not temp_date:
+        raise HTTPException(404)
+
+    return temp_date
