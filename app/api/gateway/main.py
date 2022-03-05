@@ -9,8 +9,8 @@ origins = [
     "https://sculis.uceumice.com",
     "https://sculis-api.uceumice.com",
     "http://sculis-web.herokuapp.com",
-    "http://127.0.0.1:3000",
-    "http://localhost:3000"
+    # "http://127.0.0.1:3000",
+    # "http://localhost:3000"
 ]
 
 app = FastAPI(
