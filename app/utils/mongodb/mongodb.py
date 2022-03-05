@@ -257,7 +257,7 @@ class Connector:
     # commons
 
     @ staticmethod
-    def _getByDate(coll: Collection, date_: datetime.date, _filters: list[dict[str, str]] = None) -> list:
+    def _getSubstByDate(coll: Collection, date_: datetime.date, _filters: list[dict[str, str]] = None) -> list:
         date_ = _date_to_datetime(date_)
 
         # holy aggregation
@@ -278,6 +278,15 @@ class Connector:
             return None
 
     @ staticmethod
+    def _getNewsByDate(coll: Collection, date_: datetime.date) -> list:
+        date_ = coll.find_one(filter={'metas._': _date_to_datetime(date_)})
+
+        if date_:
+            return dict(date_)
+        else:
+            return None
+
+    @ staticmethod
     def _getLast(coll) -> dict:
         data_ = coll.find().sort("_id", -1).limit(1)
         if data_:
@@ -285,14 +294,14 @@ class Connector:
 
     # substitution getters
     def getSubstitution(self, date_: datetime.date, _filters=None):
-        return self._getByDate(self.col_test, date_=date_, _filters=_filters)
+        return self._getSubstByDate(self.col_test, date_=date_, _filters=_filters)
 
     def getLastSubstitution(self):
         return self._getLast(self.col_test)
 
     # news getters
     def getNews(self, date_: datetime.date) -> list:
-        data_ = self._getByDate(self.col_news, date_=date_)
+        data_ = self._getNewsByDate(self.col_news, date_=date_)
         if data_:
             return data_['news_']
 
