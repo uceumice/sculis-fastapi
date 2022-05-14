@@ -11,6 +11,7 @@ load_dotenv()
 
 SCRIPTDIR = os.path.dirname(os.path.abspath(__file__))
 
+
 def config_logger():
     logger = logging.getLogger("test")
     logger.setLevel(logging.DEBUG)
@@ -33,6 +34,7 @@ def config_logger():
 
     return logger
 
+
 logger = config_logger()
 
 
@@ -46,7 +48,7 @@ INTERVAAL = config_intervaal(sekunde=10)
 def update():
     # establish connection to the database
     connector = Connector()
-    
+
     # collect links to retrieve data from
     for link in json.loads(os.environ.get("LINKS")):
         # instantiate scraper
@@ -56,11 +58,12 @@ def update():
         date_ = scraper.getDate()
 
         # update substitution
-        connector.insertUpdateSubstitution(date_=date_, subs_=scraper.getSubstitution())
+        connector.insertUpdateSubstitution(
+            date_=date_, subs_=scraper.getSubstitution())
 
         # update news
-        connector.insertUpdateNews( date_=date_, news_=scraper.getNews())
-    
+        connector.insertUpdateNews(date_=date_, news_=scraper.getNews())
+
     connector.close()
 
 
@@ -76,4 +79,3 @@ while True:
         logger.error(e)
     logger.debug(f"Wait {INTERVAAL} sec")
     time.sleep(INTERVAAL)
-
